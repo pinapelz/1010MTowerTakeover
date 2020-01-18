@@ -25,30 +25,6 @@ void timer1() {
   
   }
 }
-void rainbow(){
-  while(true){
-        Brain.Screen.setFillColor(red);
-    Brain.Screen.drawRectangle(0, 0, 500, 40);
-    wait(50, msec);
-    Brain.Screen.setFillColor(orange);
-    Brain.Screen.drawRectangle(0, 40, 500, 40);
-    wait(50, msec);
-    Brain.Screen.setFillColor(yellow);
-    Brain.Screen.drawRectangle(0, 80, 500, 40);
-    wait(50, msec);
-    Brain.Screen.setFillColor(green);
-    Brain.Screen.drawRectangle(0, 120, 500, 40);
-    wait(50, msec);
-    Brain.Screen.setFillColor(blue);
-    Brain.Screen.drawRectangle(0, 160, 500, 40);
-    wait(50, msec);
-    Brain.Screen.setFillColor(purple);
-    Brain.Screen.drawRectangle(0, 200, 500, 40);
-    wait(50, msec);
-    Brain.Screen.clearScreen();
-    wait(100, msec);
-  }
-}
 
  int intakeSpeed = 127;  
   int matchLength = 180;
@@ -58,8 +34,6 @@ void rainbow(){
 void usercontrol(void) {
   //Initalize the match timer which will warn the driver if time is running low on the clock
  thread matchtimer = thread(timer1);
- thread rainbows
-  = thread(rainbow);
 
   while (1) { //Continue running this code as long as the timer is not up
 
@@ -144,7 +118,7 @@ void usercontrol(void) {
       IntakeR.stop();
     
     }
-     if(count==60){//When the remaining time of the timer reaches 60 seconds then rumble the controller
+   /*  if(count==60){//When the remaining time of the timer reaches 60 seconds then rumble the controller
        Controller1.rumble(".-.-.-.-");
        Controller1.Screen.clearScreen();
        Controller1.Screen.print("One Minute");
@@ -156,6 +130,7 @@ void usercontrol(void) {
        Controller1.Screen.print("30 Sec");
               //The purpose of this is to let the driver know that he is 30 seconds away from the match being over
      }
+     */
   
    
    

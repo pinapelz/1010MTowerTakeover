@@ -134,7 +134,7 @@ void usercontrol(void) {
       IntakeR.stop();
     
     }
-     if(count==60){//When the remaining time of the timer reaches 60 seconds then rumble the controller
+    /* if(count==60){//When the remaining time of the timer reaches 60 seconds then rumble the controller
        Controller1.rumble(".-.-.-.-");
        Controller1.Screen.clearScreen();
        Controller1.Screen.print("One Minute");
@@ -148,7 +148,7 @@ void usercontrol(void) {
      }
   
    
-   
+   */
     
   }
 }
