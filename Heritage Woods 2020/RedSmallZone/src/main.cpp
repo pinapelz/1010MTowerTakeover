@@ -116,7 +116,7 @@ void usercontrol(void) {
       Lift.stop(brakeType::hold);//Hold the arm in place
       IntakeL.stop();
       IntakeR.stop();
-    
+    Pusher.stop(brakeType::hold);
     }
    /*  if(count==60){//When the remaining time of the timer reaches 60 seconds then rumble the controller
        Controller1.rumble(".-.-.-.-");
