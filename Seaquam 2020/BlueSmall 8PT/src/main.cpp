@@ -408,12 +408,20 @@ If you are changing the distance make sure to allocate more time for the bot to 
   //driveRight(75,1000,1500);//Turn to face the scoring zone
 flipOut();
  driveBackward(45,50,50);//drive backwards and hit the wall so that the robot is lined up 
-  driveForwardSecOne(80, 1500, 2100); //Intake Set 2 of cube
+  driveForwardSecOne(85,1125,1600);   //Drive forward and intake the 3 cubes in front
+  driveRight(60,160,500); //NEEDS TUNING Get in position to back into next set of cubes
+  driveBackward(75, 1250, 1700); //NEEDS TUNING Drive to the next set of cubes
+  driveLeft(75,195,400); //NEEDS TUNING Line up with cubes
+  driveBackward(75,400,400); //Uncomment if we need to line up better (hit the wall)
+  strafeLeft(75, 200,200);
+  driveForwardSecOne(80, 1250, 1600); //Intake Set 2 of cube
+
   intake(500,100);
   intake(50, -100);
-  driveBackward(75,400,300);
-  driveLeft(60,900,1300);//Turn to face the scoring zone
+    driveBackward(75,400,300);
+  driveLeft(60,900,1200);//Turn to face the scoring zone
   driveStack(75,1150,2300,1800);//Drive to zone
+  //stackCube(); //Score cubes
   driveBackward(50, 200, 500); //Back away from the cube*/
 }
 
