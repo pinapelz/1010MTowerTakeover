@@ -34,8 +34,13 @@
 
 using namespace vex;
 void stackCube();
+void BlueOneRow();
 void cubeLock();
+void RedProtected();
+void BlueOneRow();
+void RedOneRow();
 void RedSmall();
+void BlueProtected();
 void OnePt();
   /*
   Autonomus Index
@@ -45,9 +50,19 @@ void OnePt();
   3. Blue Unportected Zone
   4. Blue Protected Zone
   5. One Point Auto
-  6. Red Unportected One Row
   */
-int autoNumber = 1;
+
+
+//HEY LOOK HERE THIS IS USED TO SELECT THE AUTONOMUS
+//HEY LOOK HERE THIS IS USED TO SELECT THE AUTONOMUS
+//HEY LOOK HERE THIS IS USED TO SELECT THE AUTONOMUS
+//HEY LOOK HERE THIS IS USED TO SELECT THE AUTONOMUS
+int autoNumber = 3;
+//HEY LOOK HERE THIS IS USED TO SELECT THE AUTONOMUS
+//HEY LOOK HERE THIS IS USED TO SELECT THE AUTONOMUS
+//HEY LOOK HERE THIS IS USED TO SELECT THE AUTONOMUS
+//HEY LOOK HERE THIS IS USED TO SELECT THE AUTONOMUS
+//CHANGE THE INTEGER VALUE
 
 vex::competition Competition;
 void pre_auton(void) {
@@ -59,9 +74,26 @@ void autonomous(void) {
     case 1 :
       RedSmall();
       break;
+    case 2:
+      RedProtected();
+      break;
+    case 3:
+      BlueOneRow();
+      break;
+    case 4:
+      BlueProtected();
+      break;
     case 5 :
       OnePt();
       break;
+    
+    case 6:
+    RedOneRow();
+    break;
+
+    case 7:
+    BlueOneRow();
+    break;
 
     default:
       break;
@@ -72,7 +104,6 @@ void autonomous(void) {
 void usercontrol(void) {
 //Variable Initalizations
  int intakeSpeed = 127;  
- bool limitPressed;
 int stackSpeed = 50;
 int outakeSpeed = 30;
 float driveSpeed = 0.8;
@@ -107,7 +138,7 @@ float driveSpeed = 0.8;
     if(Controller1.ButtonA.pressing()){
        Pusher.spin(directionType::fwd, stackSpeed, vex::velocityUnits::pct);
     }
-    else if(Controller1.ButtonB.pressing()){
+    else if(Controller1.ButtonB.pressing()&&!StackSwitch.pressing()){
       Pusher.spin(directionType::rev, 127, vex::velocityUnits::pct);
     }
     else{
@@ -129,14 +160,18 @@ float driveSpeed = 0.8;
 
    //Button Controls
     if(Controller1.ButtonY.pressing()){
-      cubeLock();
+          LeftMotorF.spin(directionType::rev, 20,velocityUnits::pct);
+    LeftMotorB.spin(vex::directionType::rev, 20,vex::velocityUnits::pct);
+    RightMotorB.spin(vex::directionType::rev, 20,vex::velocityUnits::pct);
+    RightMotorF.spin(vex::directionType::rev, 20,vex::velocityUnits::pct);
+    task::sleep(10); 
     }
     else if(Controller1.ButtonX.pressing()){
       stackCube();
     }
     else if(Controller1.ButtonUp.pressing()){
       outakeSpeed = 127;
-      Controller1.rumble("-");
+      Controller1.rumble("..");
     }
     else if(Controller1.ButtonDown.pressing()){
       outakeSpeed = 30;
@@ -150,13 +185,10 @@ float driveSpeed = 0.8;
     else if(Controller1.ButtonRight.pressing()){
       driveSpeed = 0.8;
       stackSpeed = 50;
-       Controller1.rumble("-");
+       Controller1.rumble("..");
     }
     else{
-      Lift.stop(brakeType::hold);
-      IntakeL.stop(brakeType::hold);
-      IntakeR.stop(brakeType::hold);
-      Pusher.stop(brakeType::hold);
+    
     }
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
